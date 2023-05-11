@@ -18,6 +18,8 @@ public:
 
   
   int search(int value);
+  int rsearch(int value);
+  int rsearch(int value, Node *p);
   void insert(int value);
 
   int treesum();

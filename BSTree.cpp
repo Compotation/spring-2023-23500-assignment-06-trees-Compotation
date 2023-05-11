@@ -7,7 +7,21 @@ BSTree::BSTree(){
 }
 
 
+int BSTree::rsearch(int value) {
+  return rsearch(value, root);
+}
 
+int BSTree::rsearch(int value, Node *p) {
+  if (value == p->getData()) {
+    return value;
+  }
+  if (value < p->getData()) {
+    return rsearch(value, p->getLeft());
+  } else {
+    return rsearch(value, p->getRight());
+  }
+  throw 1;
+}
 
 // Traversal - visit every node in the tree
 // O(n)
