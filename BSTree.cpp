@@ -6,7 +6,11 @@ BSTree::BSTree(){
   root = nullptr;
 }
 
+int rinsert(int value) {
+  if (value < root->getData()) {
 
+  }
+}
 int BSTree::rsearch(int value) {
   return rsearch(value, root);
 }
