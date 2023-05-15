@@ -1,6 +1,9 @@
-OBJECTS=main.o BSTree.o Node.o
-LDFLAGS=
-CXXFLAGS=
+OBJECTS = main.o BSTree.o Node.o
+LDFLAGS =
+CXXFLAGS = -g
+
+all: $(OBJECTS)
+	g++ -o main $(OBJECTS)
 
 main: $(OBJECTS)
 	g++ -o main $(OBJECTS)

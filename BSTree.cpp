@@ -6,11 +6,28 @@ BSTree::BSTree(){
   root = nullptr;
 }
 
-int rinsert(int value) {
-  if (value < root->getData()) {
+int BSTree::rinsert(int value) {
+  return rinsert(value, root);
+}
 
+int BSTree::rinsert(int value, Node *n) {
+  if (value < n->getData()) {
+    if (n->getLeft() == nullptr) {
+      auto insertedNode = new Node(value);
+      n->setLeft(insertedNode);
+      return value;
+    }
+    return rinsert(value, n->getLeft());
+  } else {
+    if (n->getRight() == nullptr) {
+      auto insertedNode = new Node(value);
+      n->setRight(insertedNode);
+      return value;
+    }
+    return rinsert(value, n->getRight());
   }
 }
+
 int BSTree::rsearch(int value) {
   return rsearch(value, root);
 }
