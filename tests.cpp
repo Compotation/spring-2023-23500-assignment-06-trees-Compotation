@@ -75,3 +75,23 @@ TEST_CASE("count leaves") {
   tr3->insert(150);
   CHECK_EQ(tr3->countLeaves(), 3);
 }
+
+TEST_CASE("height") {
+  auto tr1 = new BSTree();
+  tr1->insert(100);
+  tr1->insert(20);
+  tr1->insert(500);
+  CHECK_EQ(tr1->height(), 2);
+
+  auto tr2 = new BSTree();
+  tr2->insert(2);
+  CHECK_EQ(tr2->height(), 1);
+
+  auto tr3 = new BSTree();
+  tr3->insert(100);
+  tr3->insert(20);
+  tr3->insert(120);
+  tr3->insert(110);
+  tr3->insert(150);
+  CHECK_EQ(tr3->height(), 3);
+}
