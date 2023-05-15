@@ -35,3 +35,23 @@ TEST_CASE("insert") {
   tr2->insert(100);
   CHECK_EQ(tr2->get_debug_string(), ", 100, ");
 }
+
+TEST_CASE("delete") {
+  auto tr1 = new BSTree();
+  tr1->insert(100);
+  tr1->insert(500);
+  tr1->insert(20);
+  tr1->insert(30);
+  tr1->insert(10);
+  tr1->insert(40);
+  tr1->insert(25);
+  tr1->insert(21);
+  tr1->rdelete(30);
+  CHECK_EQ(tr1->get_debug_string(), ", 10, , 20, , 21, , 25, , 40, , 100, , 500, ");
+
+  auto tr2 = new BSTree();
+  tr2->insert(2);
+  tr2->insert(5);
+  tr2->rdelete(5);
+  CHECK_EQ(tr2->get_debug_string(), ", 2, ");
+}
