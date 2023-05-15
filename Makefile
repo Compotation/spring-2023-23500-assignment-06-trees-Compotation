@@ -18,4 +18,4 @@ Node.o: Node.cpp Node.h
 
 tests.o: tests.cpp doctest.h
 clean:
-	rm -f main $(OBJECTS)
+	rm -f main tests *.o
