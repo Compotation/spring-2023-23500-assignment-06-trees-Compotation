@@ -37,9 +37,13 @@ int BSTree::rsearch(int value, Node *p) {
     return value;
   }
   if (value < p->getData()) {
-    return rsearch(value, p->getLeft());
+    if (p->getLeft() != nullptr) {
+      return rsearch(value, p->getLeft());
+    }
   } else {
-    return rsearch(value, p->getRight());
+    if (p->getRight() != nullptr) {
+      return rsearch(value, p->getRight());
+    }
   }
   throw 1;
 }
