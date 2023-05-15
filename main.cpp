@@ -8,6 +8,10 @@ int main() {
 //  tr->rsearch(5);
 //  tr->rsearch(-20);
 //  std::cout << tr->rsearch(30) << "\n";
+  auto tr2 = new BSTree();
+  tr2->insert(100);
+  tr2->insert(20);
+  tr2->rdelete(20);
   auto tr1 = new BSTree();
   tr1->insert(100);
   tr1->insert(500);
@@ -15,6 +19,9 @@ int main() {
   tr1->insert(30);
   tr1->insert(10);
   tr1->insert(40);
+  tr1->insert(25);
+  tr1->insert(21);
+  tr1->rdelete(30);
   std::cout << "hello\n";
   //tr->rsearch(-1);
   return 0;
