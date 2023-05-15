@@ -333,3 +333,34 @@ Node* BSTree::findMax(Node *parent) {
   return parent;
 }
 
+int BSTree::countLeaves(Node* root) {
+  if (root == nullptr) {
+    return 0;
+  } else if (root->getLeft() == nullptr && root->getRight() == nullptr) {
+    // Node is a leaf
+    return 1;
+  } else {
+    return countLeaves(root->getLeft()) + countLeaves(root->getRight());
+  }
+}
+
+int BSTree::countLeaves() {
+  return countLeaves(root);
+}
+
+int BSTree::height() {
+  return height(root);
+}
+
+int BSTree::height(Node *root) {
+  if (root == nullptr) {
+    // Base case: empty tree has height of 0
+    return 0;
+  } else {
+    // Recursive case: height is 1 + max height of subtrees
+    int leftHeight = height(root->getLeft());
+    int rightHeight = height(root->getRight());
+    return 1 + std::max(leftHeight, rightHeight);
+  }
+}
+

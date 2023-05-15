@@ -21,7 +21,8 @@ int main() {
   tr1->insert(40);
   tr1->insert(25);
   tr1->insert(21);
-  tr1->rdelete(30);
+  std::cout << tr1->height() << "\n";
+//  tr1->rdelete(30);
   std::cout << "hello\n";
   //tr->rsearch(-1);
   return 0;

@@ -27,6 +27,10 @@ public:
   Node* rdelete(int data);
   Node* findMin(Node *parent);
   Node* findMax(Node *parent);
+  int countLeaves();
+  int countLeaves(Node* root);
+  int height(Node* root);
+  int height();
   int treesum();
   int treesum(Node *n);
   int countodds();
