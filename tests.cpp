@@ -22,5 +22,16 @@ TEST_CASE("search") {
   CHECK_EQ(tr->rsearch(nums[2]), nums[2]);
   CHECK_EQ(tr->rsearch(nums[9]), nums[9]);
   CHECK_THROWS(tr->rsearch(-1));
+}
 
+TEST_CASE("insert") {
+  auto tr = new BSTree();
+  tr->insert(100);
+  tr->insert(50);
+  tr->insert(20);
+  CHECK_EQ(tr->get_debug_string(), ", 20, , 50, , 100, ");
+
+  auto tr2 = new BSTree();
+  tr2->insert(100);
+  CHECK_EQ(tr2->get_debug_string(), ", 100, ");
 }
