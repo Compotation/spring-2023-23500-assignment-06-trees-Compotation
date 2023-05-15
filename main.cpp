@@ -2,7 +2,7 @@
 #include "BSTree.h"
 
 int main() {
-//  BSTree* tr = new BSTree();
+//  auto* tr = new BSTree();
 //  tr->setup();
 //  tr->rsearch(10);
 //  tr->rsearch(5);
@@ -21,9 +21,8 @@ int main() {
   tr1->insert(40);
   tr1->insert(25);
   tr1->insert(21);
-//  std::cout << tr1->height() << "\n";
+  std::cout << tr1->height() << "\n";
   tr1->rdelete(30);
-  std::cout << "hello\n";
-  //tr->rsearch(-1);
+  std::cout << tr1->get_debug_string() << "\n";
   return 0;
 }
