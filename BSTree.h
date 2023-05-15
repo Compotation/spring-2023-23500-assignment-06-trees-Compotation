@@ -23,8 +23,10 @@ public:
   void insert(int value);
   int rinsert(int value);
   int rinsert(int value, Node *p);
-  Node* rdelete(Node *parent, int data, Node *upParent);
-  Node* rdelete(int data);
+//  Node* rdelete(Node *parent, int data, Node *upParent);
+//  Node* rdelete(int data);
+  Node* rdelete(Node* root, int value);
+  Node* rdelete(int value);
   Node* findMin(Node *parent);
   Node* findMax(Node *parent);
   int countLeaves();

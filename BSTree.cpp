@@ -244,72 +244,30 @@ void BSTree::setup() {
 
 }
 
-Node *BSTree::rdelete(Node *parent, int data, Node *upParent) {
-  if (parent == nullptr) {
-    delete parent;
-    return nullptr;
-  }
-
-  if (data < parent->getData()) {
-    return rdelete(parent->getLeft(), data, parent);
-  } else if (data > parent->getData()) {
-    return rdelete(parent->getRight(), data, parent);
-  } else {
-    if (parent->getLeft() == nullptr && parent->getRight() == nullptr) {
-      if (parent->getData() < upParent->getData()) {
-        upParent->setLeft(nullptr);
-      } else {
-        upParent->setRight(nullptr);
-      }
-      delete parent;
-      return upParent;
-    } else if (parent->getLeft() != nullptr && parent->getRight() == nullptr) {
-      // child is left
-      auto returnN = parent->getLeft();
-      if (parent->getData() < upParent->getData()) {
-        upParent->setLeft(parent->getLeft());
-      } else {
-        upParent->setRight(parent->getLeft());
-      }
-      delete parent;
-      return returnN;
-
-    } else if (parent->getLeft() == nullptr && parent->getRight() != nullptr) {
-      // child is right
-      auto returnN = parent->getRight();
-      if (parent->getData() < upParent->getData()) {
-        upParent->setLeft(parent->getRight());
-      } else {
-        upParent->setRight(parent->getRight());
-      }
-      delete parent;
-      return returnN;
-
-    } else {
-//      auto predecessor = findMax(parent->getLeft());
-//      parent->setData(predecessor->getData());
-//      parent->setLeft(rdelete(parent->getLeft(), predecessor->getData(), parent));
-
-      auto minNode = findMin(parent);
-      parent->setData(minNode->getData());
-      parent->setRight(rdelete(parent->getRight(), minNode->getData(), parent));
-    }
-  }
-  return parent;
-}
-
-Node *BSTree::rdelete(int data) {
+Node* BSTree::rdelete(Node* root, int value) {
   if (root == nullptr) {
     return root;
   }
-  if (data == root->getData()) {
-    root = nullptr;
-    return root;
-  } else if (data < root->getData()) {
-    return rdelete(root->getLeft(), data, root);
+  if (value < root->getData()) {
+    root->setLeft(rdelete(root->getLeft(), value));
+  } else if (value > root->getData()) {
+    root->setRight(rdelete(root->getRight(), value));
   } else {
-    return rdelete(root->getRight(), data, root);
+    if (root->getLeft() == nullptr) {
+      Node* temp = root->getRight();
+      delete root;
+      return temp;
+    } else if (root->getRight() == nullptr) {
+      Node* temp = root->getLeft();
+      delete root;
+      return temp;
+    } else {
+      Node* temp = findMin(root->getRight());
+      root->setData(temp->getData());
+      root->setRight(rdelete(root->getRight(), temp->getData()));
+    }
   }
+  return root;
 }
 
 Node* BSTree::findMin(Node *parent) {
@@ -362,5 +320,9 @@ int BSTree::height(Node *root) {
     int rightHeight = height(root->getRight());
     return 1 + std::max(leftHeight, rightHeight);
   }
+}
+
+Node *BSTree::rdelete(int value) {
+  return rdelete(root, value);
 }
 
